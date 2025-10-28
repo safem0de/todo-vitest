@@ -21,6 +21,9 @@ todo-vitest/
 │  │  ├─ calculations.ts     # logic สำหรับ test unit
 │  │  └─ api.ts              # mock api (ภายหลังใช้กับ integration)
 │  │
+│  └─ types/
+│  │  └─ todo.ts
+│  │
 │  └─ __tests__/             # 🧪 เก็บ test file ทั้งหมด
 │     ├─ unit/
 │     │  └─ calculations.test.ts
