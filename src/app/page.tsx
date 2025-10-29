@@ -4,6 +4,7 @@ import { useState } from 'react'
 import AddTodoForm from '@/components/AddTodoForm'
 import type { Todo } from '@/types/todo'
 import { addTodo, removeTodo, toggleDone } from '@/lib/calculations'
+import TodoItem from '@/components/TodoItem'
 
 export default function HomePage() {
   const [todos, setTodos] = useState<Todo[]>([])
@@ -36,25 +37,12 @@ export default function HomePage() {
           <p className="text-black text-center">ยังไม่มีงานใด ๆ</p>
         )}
         {todos.map((todo) => (
-          <li
+          <TodoItem
             key={todo.id}
-            className="flex justify-between items-center bg-white rounded-lg p-2 mb-2 border"
-          >
-            <button
-              onClick={() => handleToggle(todo.id)}
-              className={`flex-1 text-left cursor-pointer bg-transparent border-0 p-0 ${todo.done ? 'line-through text-gray-600 opacity-80' : 'text-gray-900 hover:text-blue-600'
-                }`}
-            >
-              {todo.text}
-            </button>
-            <button
-              aria-label={`remove-${todo.id}`}
-              className="text-red-500 hover:text-red-700 ml-2"
-              onClick={() => handleRemove(todo.id)}
-            >
-              ✖
-            </button>
-          </li>
+            todo={todo}
+            onToggle={handleToggle}
+            onRemove={handleRemove}
+          />
         ))}
       </ul>
     </main>
