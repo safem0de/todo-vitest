@@ -87,14 +87,25 @@ export default defineConfig({
 import '@testing-library/jest-dom';
 ```
 ### Concepts of Test
+- Test Scenario vs. Test Case
 | หัวข้อ              | ความหมาย                                                           | ตัวอย่าง                                                                 |
 | ----------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------- |
 | **Test Scenario** | ภาพรวมของสิ่งที่ต้องทดสอบ (story หรือ behavior)                          | “ผู้ใช้กรอก todo แล้วกดเพิ่ม → ระบบต้องบันทึกงานใหม่”                            |
 | **Test Case**     | การแตก scenario ออกเป็นกรณีทดสอบย่อย ๆ (input / condition / expected) | 1. กรอกข้อความปกติ<br>2. กรอกช่องว่าง<br>3. กรอกซ้ำ<br>4. กรอกข้อความยาวผิดปกติ |
-
+- Layers of Test
 | Layer                | ทดสอบอะไร                         | มุมมอง      | เป้าหมายหลัก                     |
 | -------------------- | --------------------------------- | ---------- | ------------------------------ |
 | **Unit Test**        | Function / Logic เดี่ยว ๆ           | Programmer | ตรวจ logic ถูกต้อง               |
 | **Component Test**   | React Component 1 ตัว              | UI Dev     | ตรวจว่าการ render + event ถูกต้อง |
 | **Integration Test** | หลาย component / module ทำงานร่วมกัน | System     | ตรวจว่าเชื่อมกันได้ถูก               |
 | **E2E Test**         | การใช้งานจริง (user flow)           | User       | ตรวจว่า app ทำงานครบตาม flow     |
+- Framework for Test
+| Framework            | เหมาะกับ             | คิดยังไง             | ตัวอย่าง         |
+| -------------------- | ------------------- | ------------------ | -------------- |
+| **EP**               | Input validation    | กลุ่มค่าเท่ากัน         | ช่องกรอกข้อความ  |
+| **BVA**              | Limit / Length      | ทดสอบขอบเขต        | ความยาวชื่อ      |
+| **Decision Table**   | เงื่อนไขหลายชั้น        | แสดงทุก combination | เงื่อนไขเพิ่ม todo |
+| **State Transition** | การเปลี่ยนสถานะ       | Test ทุก transition | toggle done    |
+| **Error Guessing**   | UX / human error    | เดาจุดพัง            | กด submit ซ้ำ    |
+| **BDD (Gherkin)**    | Behavior / flow จริง | Given–When–Then    | user flow      |
+| **CRUD Matrix**      | ระบบข้อมูล            | ตรวจทุก action      | Todo app       |
