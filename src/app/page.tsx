@@ -8,7 +8,7 @@ import { addTodo, removeTodo, toggleDone } from '@/lib/calculations'
 export default function HomePage() {
   const [todos, setTodos] = useState<Todo[]>([])
 
-    // 🧩 1️⃣ handler สำหรับเพิ่ม to-do
+  // 🧩 1️⃣ handler สำหรับเพิ่ม to-do
   const handleAdd = (text: string) => {
     setTodos(prev => addTodo(prev, text))
   }

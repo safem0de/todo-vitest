@@ -31,7 +31,9 @@ todo-vitest/
 │     │  └─ AddTodoForm.test.tsx
 │     └─ integration/
 │        └─ todoFlow.test.tsx
-│
+├─ tests/
+│    └─ e2e/
+│        └─
 ├─ vitest.config.ts
 ├─ vitest.setup.ts
 ├─ tsconfig.json
@@ -49,6 +51,12 @@ todo-vitest/
 | Customize import alias? | ✅ Yes (`@/*`) | ใช้ได้ทั้งใน test และ app    |
 ---
 ### Setup Test Project
+| Type             | โฟลเดอร์                     | ใช้เครื่องมือ                     |
+| ---------------- | --------------------------- | ----------------------------- |
+| Unit Test        | `src/__tests__/unit`        | Vitest                        |
+| Component Test   | `src/__tests__/component`   | Vitest + RTL                  |
+| Integration Test | `src/__tests__/integration` | Vitest + RTL                  |
+| E2E Test         | `tests/e2e`                 | Playwright / Cypress (ภายหลัง) |
 - library install
 ```bash
 npm install vitest @testing-library/react @testing-library/jest-dom jsdom
