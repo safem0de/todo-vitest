@@ -86,8 +86,15 @@ export default defineConfig({
 ```bash
 import '@testing-library/jest-dom';
 ```
-### Concept: Test Case vs Test Scenario
+### Concepts of Test
 | หัวข้อ              | ความหมาย                                                           | ตัวอย่าง                                                                 |
 | ----------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------- |
 | **Test Scenario** | ภาพรวมของสิ่งที่ต้องทดสอบ (story หรือ behavior)                          | “ผู้ใช้กรอก todo แล้วกดเพิ่ม → ระบบต้องบันทึกงานใหม่”                            |
 | **Test Case**     | การแตก scenario ออกเป็นกรณีทดสอบย่อย ๆ (input / condition / expected) | 1. กรอกข้อความปกติ<br>2. กรอกช่องว่าง<br>3. กรอกซ้ำ<br>4. กรอกข้อความยาวผิดปกติ |
+
+| Layer                | ทดสอบอะไร                         | มุมมอง      | เป้าหมายหลัก                     |
+| -------------------- | --------------------------------- | ---------- | ------------------------------ |
+| **Unit Test**        | Function / Logic เดี่ยว ๆ           | Programmer | ตรวจ logic ถูกต้อง               |
+| **Component Test**   | React Component 1 ตัว              | UI Dev     | ตรวจว่าการ render + event ถูกต้อง |
+| **Integration Test** | หลาย component / module ทำงานร่วมกัน | System     | ตรวจว่าเชื่อมกันได้ถูก               |
+| **E2E Test**         | การใช้งานจริง (user flow)           | User       | ตรวจว่า app ทำงานครบตาม flow     |
