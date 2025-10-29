@@ -1,12 +1,22 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { test, expect } from 'vitest';
-import Page from '@/app/page';
+import { render, screen, fireEvent } from '@testing-library/react'
+import { test, expect } from 'vitest'
+import HomePage from '@/app/page'
 
-test('user can add and see todo in list', async () => {
-    render(<Page />);
-    const input = screen.getByPlaceholderText('เพิ่มงานใหม่...');
-    fireEvent.change(input, { target: { value: 'เขียน test ให้ผ่าน' } });
-    fireEvent.submit(input);
+test('user can add and remove a todo', async () => {
+  render(<HomePage />)
 
-    expect(await screen.findByText('เขียน test ให้ผ่าน')).toBeInTheDocument();
-});
+  const input = screen.getByPlaceholderText('เพิ่มงานใหม่...')
+  const button = screen.getByText('เพิ่ม')
+
+  fireEvent.change(input, { target: { value: 'เรียน Vitest' } })
+  fireEvent.click(button)
+
+  // ตรวจว่า "to-do" ปรากฏ
+  expect(await screen.findByText('เรียน Vitest')).toBeInTheDocument()
+
+  // ลบ
+  const removeBtn = screen.getByLabelText(/remove-/)
+  fireEvent.click(removeBtn)
+
+  expect(screen.queryByText('เรียน Vitest')).not.toBeInTheDocument()
+})

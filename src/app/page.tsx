@@ -3,22 +3,24 @@
 import { useState } from 'react'
 import AddTodoForm from '@/components/AddTodoForm'
 import type { Todo } from '@/types/todo'
+import { addTodo, removeTodo, toggleDone } from '@/lib/calculations'
 
 export default function HomePage() {
   const [todos, setTodos] = useState<Todo[]>([])
 
+    // 🧩 1️⃣ handler สำหรับเพิ่ม to-do
   const handleAdd = (text: string) => {
-    setTodos((prev) => [...prev, { id: Date.now(), text, done: false }])
+    setTodos(prev => addTodo(prev, text))
   }
 
-  const toggleDone = (id: number) => {
-    setTodos((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
-    )
+  // 🧩 2️⃣ handler สำหรับ toggle สถานะ done
+  const handleToggle = (id: number) => {
+    setTodos(prev => toggleDone(prev, id))
   }
 
-  const removeTodo = (id: number) => {
-    setTodos((prev) => prev.filter((t) => t.id !== id))
+  // 🧩 3️⃣ handler สำหรับลบ to-do
+  const handleRemove = (id: number) => {
+    setTodos(prev => removeTodo(prev, id))
   }
 
   return (
@@ -39,7 +41,7 @@ export default function HomePage() {
             className="flex justify-between items-center bg-white rounded-lg p-2 mb-2 border"
           >
             <button
-              onClick={() => toggleDone(todo.id)}
+              onClick={() => handleToggle(todo.id)}
               className={`flex-1 text-left cursor-pointer bg-transparent border-0 p-0 ${todo.done ? 'line-through text-gray-600 opacity-80' : 'text-gray-900 hover:text-blue-600'
                 }`}
             >
@@ -48,7 +50,7 @@ export default function HomePage() {
             <button
               aria-label={`remove-${todo.id}`}
               className="text-red-500 hover:text-red-700 ml-2"
-              onClick={() => removeTodo(todo.id)}
+              onClick={() => handleRemove(todo.id)}
             >
               ✖
             </button>
