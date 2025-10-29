@@ -2,12 +2,7 @@
 
 import { useState } from 'react'
 import AddTodoForm from '@/components/AddTodoForm'
-
-interface Todo {
-  id: number
-  text: string
-  done: boolean
-}
+import type { Todo } from '@/types/todo'
 
 export default function HomePage() {
   const [todos, setTodos] = useState<Todo[]>([])
