@@ -112,3 +112,8 @@ import '@testing-library/jest-dom';
 | **Error Guessing**   | UX / human error    | เดาจุดพัง            | กด submit ซ้ำ    |
 | **BDD (Gherkin)**    | Behavior / flow จริง | Given–When–Then    | user flow      |
 | **CRUD Matrix**      | ระบบข้อมูล            | ตรวจทุก action      | Todo app       |
+---
+### Start Test
+```bash
+npx vitest
+```
