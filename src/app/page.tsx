@@ -4,7 +4,7 @@ import { useState } from 'react'
 import AddTodoForm from '@/components/AddTodoForm'
 import type { Todo } from '@/types/todo'
 import { addTodo, removeTodo, toggleDone } from '@/lib/calculations'
-import TodoItem from '@/components/TodoItem'
+import TodoList from '@/components/TodoList'
 
 export default function HomePage() {
   const [todos, setTodos] = useState<Todo[]>([])
@@ -32,19 +32,11 @@ export default function HomePage() {
       <AddTodoForm onAdd={handleAdd} />
 
       {/* List */}
-      <ul className="mt-6 w-full max-w-md">
-        {todos.length === 0 && (
-          <p className="text-black text-center">ยังไม่มีงานใด ๆ</p>
-        )}
-        {todos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            onToggle={handleToggle}
-            onRemove={handleRemove}
-          />
-        ))}
-      </ul>
+      <TodoList
+        todos={todos}
+        onToggle={handleToggle}
+        onRemove={handleRemove}
+      />
     </main>
   )
 }
