@@ -16,6 +16,7 @@ describe('<HomePage /> Integration Test', () => {
 
     expect(screen.getByText('ยังไม่มีงานใด ๆ')).toBeInTheDocument()
   });
+  
   // TC02: เมื่อพิมพ์ข้อความและกด “เพิ่ม”	To-do ใหม่ปรากฏใน list
   test('TC02: เพิ่ม todo ใหม่', () => {
     render(<HomePage />)
@@ -25,6 +26,7 @@ describe('<HomePage /> Integration Test', () => {
     fireEvent.click(addButton)
     expect(screen.getByText('งานทดสอบ')).toBeInTheDocument()
   });
+
   // TC03: เมื่อกดปุ่ม toggle สถานะของ to-do เปลี่ยนแปลง
   test('TC03: Toggle สถานะ todo', () => {
     render(<HomePage />)
@@ -37,6 +39,7 @@ describe('<HomePage /> Integration Test', () => {
     fireEvent.click(todoText)
     expect(todoText).toHaveClass('line-through')
   });
+
   // TC04: เมื่อกดปุ่มลบ	to-do ถูกลบออกจาก list
   test('TC04: ลบ todo', () => {
     vi.spyOn(Date, 'now').mockReturnValue(1) //แบบนี้เวลาสร้าง to-do → id จะเป็น 1 ทุกครั้ง ทำให้ test ทำงานตรงตามที่เขียนไว้
