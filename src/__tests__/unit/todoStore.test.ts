@@ -7,10 +7,8 @@ describe('useTodoStore', () => {
     useTodoStore.setState({
       todos: [{ id: 1, text: 'Test', done: false }]
     })
-
     // Act
     useTodoStore.getState().toggle(999) // id ไม่ตรง
-
     // Assert
     const todos = useTodoStore.getState().todos
     expect(todos[0].done).toBe(false) // state ไม่เปลี่ยน
